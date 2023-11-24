@@ -7,3 +7,4 @@ This is a calendar application for a 9-5 workday. It allows the user to save the
 4. There is then a two part function that runs on page load. The first part uses an event listener for the save buttons attached to each time block (pairs determined by using .closest) to save whatever text the user has placed in the text area alongside the corresponding id to localstorage. The id is saved with the text as a key to sort the saved entried and allow for them to be pulled back to the right time block on refresh.
 5. The second part pulls the stored id that is being used as a key, then places the text saved with it in the description section of the corresponding time block.
 ## Application Link
+https://orosunn.github.io/Simple-Calendar-App/
