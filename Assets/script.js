@@ -3,6 +3,7 @@ let currentDate = dayjs().format('YYYY-MM-DD');
 currentDayEl.textContent = currentDate;
 
 $(function () {
+  
   var currentHour = dayjs().hour();
 
   // 9AM
@@ -16,7 +17,7 @@ $(function () {
   }
   else {
     hour9El.classList.add('past')
-  }
+  };
 
   // 10AM
   let hour10El = document.getElementById('hour-10');
@@ -29,7 +30,7 @@ $(function () {
   }
   else {
     hour10El.classList.add('past')
-  }
+  };
 
   // 11AM
   let hour11El = document.getElementById('hour-11');
@@ -42,7 +43,7 @@ $(function () {
   }
   else {
     hour11El.classList.add('past')
-  }
+  };
 
   // 12PM
   let hour12El = document.getElementById('hour-12');
@@ -55,7 +56,7 @@ $(function () {
   }
   else {
     hour12El.classList.add('past')
-  }
+  };
 
   // 1PM
   let hour13El = document.getElementById('hour-13');
@@ -68,7 +69,7 @@ $(function () {
   }
   else {
     hour13El.classList.add('past')
-  }
+  };
 
   // 2PM
   let hour14El = document.getElementById('hour-14');
@@ -81,7 +82,7 @@ $(function () {
   }
   else {
     hour14El.classList.add('past')
-  }
+  };
 
   // 3PM
   let hour15El = document.getElementById('hour-15');
@@ -94,7 +95,7 @@ $(function () {
   }
   else {
     hour15El.classList.add('past')
-  }
+  };
 
   // 4PM
   let hour16El = document.getElementById('hour-16');
@@ -107,7 +108,7 @@ $(function () {
   }
   else {
     hour16El.classList.add('past')
-  }
+  };
 
   // 5PM
   let hour17El = document.getElementById('hour-17');
@@ -120,21 +121,10 @@ $(function () {
   }
   else {
     hour17El.classList.add('past')
-  }
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
- 
+  };
   
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  $(document).ready(function () {
 
+  $(document).ready(function () {
     $('.saveBtn').on('click' , function(){
      var timeBlockEl = $(this).closest('.time-block');
      var timeBlockId = timeBlockEl.attr('id');
@@ -143,19 +133,11 @@ $(function () {
      console.log('Textarea value saved:', textArea, 'Time block ID key:', timeBlockId);
     });
 
+    $('.time-block').each(function() {
+      var timeBlockId = $(this).attr('id');
+      var storedLocal = localStorage.getItem(timeBlockId);
+      $(this).find('.description').val(storedLocal);
+    });
   });
+
 });
-
-
-//save to refresh and maintain text entries
-//^^ add event listener to the class .saveBtn $('.saveBtn').on('click' , function(){}) + navigate the DOM to grab the val () of the textarea +save the val () of the textarea in localstorage under 'hour-9'
-
-// var firstBlock = $('.time-block');
-//   firstBlock.each(function(i, rand) {
-//     var hourId = this.id;
-//     var local = localStorage.getItem(hourId);
-//     console.log(this);
-    
-//   });
-
-//^^ loop  through each time block $('.time-block').each() and grab the id (ex: hour-9) + localStorage.getItem('hour-9') + set the val() of its text area to the data in localstorage
