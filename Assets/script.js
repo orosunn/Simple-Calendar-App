@@ -47,7 +47,7 @@ $(function () {
 
   // 12PM
   let hour12El = document.getElementById('hour-12');
-  let hour12 = parseInt(hour9El.id.match(/\d+/)[0], 10);
+  let hour12 = parseInt(hour12El.id.match(/\d+/)[0], 10);
   if (hour12 > currentHour){
     hour12El.classList.add('future')
   }
